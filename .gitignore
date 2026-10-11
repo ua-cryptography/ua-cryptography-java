@@ -1,0 +1,50 @@
+# Gradle and Android
+.gradle/
+.kotlin/
+build/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.log
+
+# Local assistant instructions, settings and task notes, in any directory
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+Task.md
+
+# Editors
+.idea/
+.vscode/
+*.iml
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Native libraries are downloaded or copied by the supplyNativeLibraries task, never committed.
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+
+# Signing keys of the publication and private key material must never be committed:
+# the tests use synthetic keys and public CA certificates only.
+*.gpg
+*.asc
+*.jks
+*.keystore
+*.pfx
+*.p12
+*.pck
+*.PCK
+*.SK
+*.ZS2
+Key-6.dat
+/private/
