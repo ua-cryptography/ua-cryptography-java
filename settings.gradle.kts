@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 rootProject.name = "ua-cryptography-java"
 
 include(":ua-cryptography")
+include(":example")

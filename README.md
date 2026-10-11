@@ -125,6 +125,19 @@ library is thread-safe.
 From Java, the functions are static methods of `UaCryptography`; the suspending ones take a `Continuation`, so a Java
 app calls them through a Kotlin wrapper of its own.
 
+## Example
+
+[`example/`](example) is an app with the three tabs of the Dart package's example: **Verify** a signed file, **Sign**
+a document with a `.jks` key (or a synthetic test key), and the trusted **Certificates** (the public roots of the ЦЗО
+and the НБУ, the «Дія» and PrivatBank CAs, built in; more can be added). It depends on the published library from
+Maven Central, as an app does:
+
+```sh
+./gradlew :example:installDebug                 # on a connected device or emulator
+./gradlew :example:connectedDebugAndroidTest    # its tests there
+./gradlew :example:installDebug -PuaCryptography.exampleFromSource=true  # with the library of this repository
+```
+
 ## How it is built
 
 - `ua-cryptography/native-release.properties` pins a release of ua-cryptography-rust and the SHA-256 of its bare
@@ -174,6 +187,8 @@ repository.
    `maven-central` environment.
 3. Once approved, the deployment is uploaded to the [Central Portal](https://central.sonatype.com/publishing/deployments),
    signed and validated; **Publish** there releases it to Maven Central.
+4. Once it is on Maven Central, set `ua-cryptography-android` in `gradle/libs.versions.toml` to it: the version the
+   example app uses.
 
 The workflow reads the secrets `MAVEN_CENTRAL_USERNAME`, `MAVEN_CENTRAL_PASSWORD` (a Central Portal user token),
 `SIGNING_KEY` (ASCII-armored private key) and `SIGNING_KEY_PASSWORD`.

@@ -10,7 +10,8 @@ permissions:
 
 jobs:
   # The release libraries are downloaded from the pinned release and checked against the pinned SHA-256; lint, the JVM
-  # tests and the publication to a local repository, as Maven Central would receive it.
+  # tests and the publication to a local repository, as Maven Central would receive it; the example app with the
+  # published library, and with this repository's, so that a change of the API that breaks it shows before a release.
   build:
     runs-on: ubuntu-latest
     steps:
@@ -23,9 +24,12 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - run: ./gradlew :ua-cryptography:build :ua-cryptography:publishToMavenLocal
+      - run: ./gradlew :ua-cryptography:build :ua-cryptography:publishToMavenLocal :example:build
 
-  # The instrumented tests on an emulator: the JNI bindings, the native library and every signature format.
+      - run: ./gradlew :example:assembleRelease -PuaCryptography.exampleFromSource=true
+
+  # The instrumented tests on an emulator: the JNI bindings, the native library, every signature format; the example
+  # with the published library.
   instrumented:
     runs-on: ubuntu-latest
     steps:
@@ -50,4 +54,4 @@ jobs:
           api-level: 34
           arch: x86_64
           target: google_apis
-          script: ./gradlew :ua-cryptography:connectedDebugAndroidTest
+          script: ./gradlew :ua-cryptography:connectedDebugAndroidTest :example:connectedDebugAndroidTest

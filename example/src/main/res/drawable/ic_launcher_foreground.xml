@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A sheet with a check mark: a signed document. The 108 dp canvas of an adaptive icon, the art in its safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,30h24l10,10v38a2,2 0,0 1,-2 2h-32a2,2 0,0 1,-2 -2v-46a2,2 0,0 1,2 -2z" />
+    <path
+        android:fillColor="#C9D8F2"
+        android:pathData="M62,30l10,10h-8a2,2 0,0 1,-2 -2z" />
+    <path
+        android:strokeColor="#1F5FBF"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M44,58l7,7l13,-15" />
+</vector>
